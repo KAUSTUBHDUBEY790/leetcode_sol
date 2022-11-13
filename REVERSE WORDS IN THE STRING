@@ -1,0 +1,16 @@
+class Solution {
+    public String reverseWords(String s) {
+        s.trim();
+        String [] a = s.replaceAll("\\s{2,}", " ").split(" ");
+        String k = a[a.length-1];
+        for(int i=a.length-2;i>=0;i--)
+        {
+            k+=" ";
+            k+=a[i];
+        }
+        return k.trim();
+        
+        
+        
+    }
+}
