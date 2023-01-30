@@ -16,3 +16,25 @@ class Solution {
         
     }
 }
+// ---------------------------A more efficient code than the first using hashset---------------------------------
+// class Solution {
+//     public int findCenter(int[][] edges) {
+//         Set<Integer> outEdgesFound = new HashSet<>();
+//         // we use hashset here as we dont want to manage an different array 
+//         for(int[] edge: edges){
+//             if(outEdgesFound.contains(edge[0])){
+//                 return edge[0];
+//             }
+//             if(outEdgesFound.contains(edge[1])){
+//                 return edge[1];
+//             }
+//             outEdgesFound.add(edge[0]);
+//             outEdgesFound.add(edge[1]);
+//         }
+
+//         return -1;
+
+
+        
+//     }
+// }
