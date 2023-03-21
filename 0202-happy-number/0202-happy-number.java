@@ -1,6 +1,6 @@
 class Solution {
     public boolean isHappy(int n) {
-        HashSet<Integer> a = new HashSet<>();
+        ArrayList<Integer> a = new ArrayList<>();
         int k=0;
         while(k!=1)
         {
