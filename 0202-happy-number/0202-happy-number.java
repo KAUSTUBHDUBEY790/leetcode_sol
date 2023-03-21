@@ -10,7 +10,6 @@ class Solution {
                 k+=Math.pow(n%10,2);
                 n/=10;
             }
-            System.out.println(k);
             if(a.contains(k))
                 return false;
             else
