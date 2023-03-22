@@ -1,34 +1,36 @@
 class Solution {
     public List<Integer> spiralOrder(int[][] m) {
         List<Integer> a = new ArrayList<>();
-        int r= m.length;
-        int c = m[0].length;
-        int startr = 0;
-        int startc = 0;
-        int endr= r-1;
-        int endc = c-1;
-        while(startr<=endr && startc<=endc)
+        int sr = 0;
+        int sc = 0;
+        int er = m.length-1;
+        int ec = m[0].length-1;
+        while(sr<=er && sc<=ec)
         {
-            for(int i=startc;i<=endc;i++)
-            a.add(m[startr][i]);
-            for(int i=startr+1;i<=endr;i++)
-            a.add(m[i][endc]);
-            for(int i=endc-1;i>=startc;i--)
-            {   if(startr==endr)
-                break;
-                a.add(m[endr][i]);}
-            for(int i=endr-1;i>=startr+1;i--)
+            for(int i=sc;i<=ec;i++)
             {
-                if(startc==endc)
-                break;
-                a.add(m[i][startc]);}
-
-                startr++;
-                startc++;
-                endr--;
-                endc--;
-
+                a.add(m[sr][i]);
+            }
+            for(int i=sr+1;i<=er;i++)
+                a.add(m[i][ec]);
+            for(int i=ec-1;i>=sc;i--)
+            {
+                if(sr==er)
+                    break;
+                a.add(m[er][i]);
+            }
+            for(int i=er-1;i>=sr+1;i--)
+            {
+                if(sc==ec)
+                    break;
+                a.add(m[i][sc]);
+            }
+            sr++;
+            sc++;
+            er--;
+            ec--;
         }
+
         return a;
         
     }
