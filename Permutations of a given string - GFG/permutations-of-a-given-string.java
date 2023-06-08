@@ -7,6 +7,7 @@ class GFG
 	public static void main(String[] args) throws IOException
 	{
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        PrintWriter out=new PrintWriter(System.out);
         int t = Integer.parseInt(br.readLine().trim());
         while(t-->0)
         {
@@ -15,11 +16,12 @@ class GFG
             List<String> ans = obj.find_permutation(S);
             for( int i = 0; i < ans.size(); i++)
             {
-                System.out.print(ans.get(i)+" ");
+                out.print(ans.get(i)+" ");
             }
-            System.out.println();
+            out.println();
                         
         }
+        out.close();
 	}
 }
 
@@ -30,27 +32,26 @@ class GFG
 class Solution {
     public List<String> find_permutation(String S) {
         // Code here
-        
-        List<String> l = new ArrayList<>();
-        permut(S,"",l);
-        HashSet<String> A = new HashSet<String>(l);
-        List<String> k = new ArrayList<>(A);
-        Collections.sort(k);
-            return k;
+        List<String> a = new ArrayList<>();
+        permute(S,"",a);
+         Collections.sort(a);
+        return a;
         
     }
-    public void permut(String s,String k,List<String> j)
+    public void permute(String s,String ans,List<String> a)
     {
         if(s.length()==0)
         {
-            j.add(k);
+            if(a.contains(ans))
+            return;
+            a.add(ans);
             return;
         }
         for(int i=0;i<s.length();i++)
         {
-            char ka = s.charAt(i);
-            String new_s = s.substring(0,i)+s.substring(i+1);
-            permut(new_s,k+ka,j);
+            char c = s.charAt(i);
+            String str = s.substring(0,i)+s.substring(i+1,s.length());
+            permute(str,ans+c,a);
         }
     }
 }
