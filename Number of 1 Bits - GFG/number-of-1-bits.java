@@ -21,8 +21,8 @@ class GFG {
 
 
 class Solution {
-    static int setBits(int N) {  
-        int count=0;
+    static int setBits(int N) { 
+        int count =0;
         while (N > 0) {
             count++;
             N = N & (N - 1);
