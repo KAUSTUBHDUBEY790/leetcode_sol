@@ -20,13 +20,16 @@ class GFG {
 // } Driver Code Ends
 
 
+// User function Template for Java
 class Solution {
-    static int setBits(int N) { 
-        int count =0;
-        while (N > 0) {
-            count++;
-            N = N & (N - 1);
-        }  
-        return count;
+    static int setBits(int N) {
+         String s = Integer.toBinaryString(N);
+         int k=0;
+         for(int i=0;i<s.length();i++)
+        {
+            if(s.charAt(i)=='1')
+            k+=1;
+        }
+         return k;
     }
 }
