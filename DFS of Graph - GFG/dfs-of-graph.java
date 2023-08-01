@@ -39,21 +39,16 @@ class Solution {
     public ArrayList<Integer> dfsOfGraph(int V, ArrayList<ArrayList<Integer>> adj) {
         // Code here
         ArrayList<Integer> a = new ArrayList<>();
-        boolean k[] = new boolean[V];
-        dfs(adj,0,a,k);
+        boolean k[] = new boolean[V]; 
+        dfs(adj,a,k,0);
         return a;
     }
-    public static void dfs(ArrayList<ArrayList<Integer>> adj,int v,ArrayList<Integer> a,boolean[] k)
+    public void dfs(ArrayList<ArrayList<Integer>> a,ArrayList<Integer> b,boolean k[],int n)
     {
-        a.add(v);
-        k[v] = true;
-        for(int i=0;i<adj.get(v).size();i++)
-        {
-            int e = adj.get(v).get(i);
-            if(!k[e])
-            {
-                dfs(adj,e,a,k);
-            }
-        }
+        b.add(n);
+        k[n]=true;
+        for(int i=0;i<a.get(n).size();i++)
+        if(!k[a.get(n).get(i)])
+        dfs(a,b,k,a.get(n).get(i));
     }
 }
