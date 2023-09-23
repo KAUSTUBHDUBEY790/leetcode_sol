@@ -38,21 +38,23 @@ class Solution {
     // a: input array
     // n: size of array
     // Function to find equilibrium point in the array.
-    public static int equilibriumPoint(long arr[], int n) {
+ public static int equilibriumPoint(long A[], int n) {
 
         // Your code here
-        int s=0;
-        for(int i=0;i<n;i++)
-        s+=arr[i];
-        
-        
-        int su=0;
-        for(int i=0;i<n;i++)
-        {
-            if(su==s-arr[i]-su)
-            return i+1;
-            su+=arr[i];
+         int totalSum = 0;
+        for (int i = 0; i < n; i++) {
+            totalSum += A[i];
         }
+        
+        int leftSum = 0;
+        for (int i = 0; i < n; i++) {
+            totalSum -= A[i];
+            if (leftSum == totalSum) {
+                return i + 1; // Return 1-based indexing
+            }
+            leftSum += A[i];
+        }
+        
         return -1;
     }
 }
