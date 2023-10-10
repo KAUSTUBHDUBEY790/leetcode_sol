@@ -37,36 +37,52 @@ class Solution {
     public boolean isCycle(int V, ArrayList<ArrayList<Integer>> adj) {
         // Code here
         int v[] = new int[V];
-        int p[] = new int[V];
-        Queue<Integer> a = new LinkedList<>();
+        // int p[] = new int[V];
+        // Queue<Integer> a = new LinkedList<>();
         for(int i=0;i<V;i++)
         {
             if(v[i]==0)
             {
-                if(isC(adj,v,p,a,i))
+                if(isCycledfs(adj,v,-1,i))
                 return true;
             }
         }
         return false;
     }
-    public boolean isC(ArrayList<ArrayList<Integer>> adj,int[]v,int[]p,Queue<Integer>a,int s)
-    {
-        p[s] = -1;
-        v[s] = 1;
-    a.add(s);
-    while(!a.isEmpty()) {
-        int c = a.remove();
-        for(int i = 0; i < adj.get(c).size(); i++) {
-            if(v[adj.get(c).get(i)] == 1 && adj.get(c).get(i) != p[c]) // Fix the condition here
-                return true;
-            else if(v[adj.get(c).get(i)] == 0) {
-                v[adj.get(c).get(i)] = 1;
-                p[adj.get(c).get(i)] = c;
-                a.add(adj.get(c).get(i));
-            }
-        }
-    }
-    return false;
+    // public boolean isCyclebfs(ArrayList<ArrayList<Integer>> adj,int[]v,int[]p,Queue<Integer>a,int s)
+    // {
+    //     p[s] = -1;
+    //     v[s] = 1;
+    // a.add(s);
+    // while(!a.isEmpty()) {
+    //     int c = a.remove();
+    //     for(int i = 0; i < adj.get(c).size(); i++) {
+    //         if(v[adj.get(c).get(i)] == 1 && adj.get(c).get(i) != p[c]) // Fix the condition here
+    //             return true;
+    //         else if(v[adj.get(c).get(i)] == 0) {
+    //             v[adj.get(c).get(i)] = 1;
+    //             p[adj.get(c).get(i)] = c;
+    //             a.add(adj.get(c).get(i));
+    //         }
+    //     }
+    // }
+    // return false;
         
-    }
+    // }
+    public boolean isCycledfs(ArrayList<ArrayList<Integer>> adj,int[]v,int p,int s)
+        {
+            v[s] = 1;
+            for(int i=0;i<adj.get(s).size();i++)
+            {
+                if(v[adj.get(s).get(i)]==0)
+                {
+                    if(isCycledfs(adj,v,s,adj.get(s).get(i)))
+                    return true;
+                }
+                else if(adj.get(s).get(i)!=p)
+                    return true;
+            }
+            return 
+            false;
+        }
 }
