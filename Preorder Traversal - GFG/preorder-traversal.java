@@ -126,18 +126,17 @@ class BinaryTree
     static ArrayList<Integer> preorder(Node root)
     {
         // Code here
-        ArrayList<Integer> a = new ArrayList<Integer>();
+        ArrayList<Integer> a =  new ArrayList<>();
         preo(root,a);
-
-        
-       
         return a;
     }
-    public static void preo(Node root,ArrayList<Integer> a){
-        if(root==null) return;
-        a.add(root.data);
-        preo(root.left,a);
-        preo(root.right,a);
+    static void preo(Node n,ArrayList<Integer> a)
+    {
+        if(n==null)
+        return;
+        a.add(n.data);
+        preo(n.left,a);
+        preo(n.right,a);
     }
 
 }
