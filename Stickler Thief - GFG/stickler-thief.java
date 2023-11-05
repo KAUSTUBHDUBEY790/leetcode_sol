@@ -35,17 +35,20 @@ class Solution
 {
     //Function to find the maximum money the thief can get.
 public int FindMaxSum(int houses[], int n){
-        if (n == 0) 
-            return 0;
-            
-        int prevMax = 0,currMax = 0;
-
-        for (int i = 0; i < n; i++) {
-            int maxAmount = Math.max(currMax, prevMax + houses[i]);
-            prevMax = currMax;
-            currMax = maxAmount;
-        }
-
-        return currMax;
-    }
+     int dp[] = new int[n+1];
+     return sum(houses,0,dp);
+}
+public int sum(int [] h,int n,int [] d)
+{
+    if(n>=h.length)
+    return 0;
+    if(n==h.length-1)
+    return h[h.length-1];
+    if(d[n]!=0)
+    return d[n];
+    int in = sum(h,n+2,d)+h[n];
+    int e = sum(h,n+1,d)+0;
+    return d[n] = Math.max(in,e);
+    
+}
 }
