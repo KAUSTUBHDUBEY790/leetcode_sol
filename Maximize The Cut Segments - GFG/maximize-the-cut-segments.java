@@ -54,7 +54,7 @@ class Solution
     //     int k = seg(n, a,dp);
     //     return k<0?0:k;
     int dp[] = new int[n+1];
-    Arrays.fill(dp,Integer.MIN_VALUE);
+    Arrays.fill(dp,-1);
     dp[0] = 0;
     for(int i=1;i<=n;i++)
     {
