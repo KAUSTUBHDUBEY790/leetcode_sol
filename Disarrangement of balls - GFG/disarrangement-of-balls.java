@@ -40,4 +40,15 @@ class Solution{
         return dp[N];
         return dp[N] = ((N-1))*(((arrange(N-1,dp)%mod)+(arrange(N-2,dp)%mod))%mod)%mod;
     }
+        static long arrange(int N)
+    {
+        long dp[] = new long[N+1];
+        dp[1] = 0;
+        dp[2] = 1;
+        for(int i=3;i<=N;i++)
+        {
+            dp[i] = ((i-1)*(((dp[i-1]%mod)+(dp[i-2]%mod))%mod)%mod);
+        }
+        return dp[N];
+    }
 }
