@@ -16,7 +16,7 @@ class Solution
     {
         //code here.
         long dp[] = new long[n+1];
-        return solve(n,k,dp);
+        return solvetab(n,k);
     }
     static long add(long a,long b)
     {return (a%mod+b%mod)%mod;}
@@ -36,6 +36,22 @@ class Solution
         
         
     }
+    static long solvetab(int n,int k)
+    {
+        if(n==1)
+        return k;
+        long dp[] = new long[n+1];
+        dp[1] = k;
+        dp[2] = add(k,mul(k,k-1));
+        
+        for(int i=3;i<=n;i++)
+        {
+            dp[i] = add(mul(dp[i-2],k-1)%mod,mul(dp[i-1],k-1)%mod)%mod;
+        }
+        return dp[n];
+        
+    }
+    
 }
 
 
