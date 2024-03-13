@@ -1,14 +1,24 @@
 class Solution {
     public int pivotInteger(int n) {
-        int leftsum=0;
-        int rightsum=0;
-
-        for(int i=1;i<=n;i++){
-            leftsum=i*(i+1)/2;
-            rightsum=n*(n+1)/2-i*(i-1)/2;
-
-            if(leftsum==rightsum){
+        if(n==1)
+            return 1;
+       int i=2,j=n-1;
+        int s1=1,s2=n;
+        while(i<=j)
+        {
+            if(s1>s2)
+            {
+                s2+=j--;
+            } 
+            else if(s1<s2)
+            {
+                s1+=i++;
+            }
+            else if(s1==s2 && i==j)
                 return i;
+            else
+            {
+                s1+=i++;
             }
         }
         return -1;
