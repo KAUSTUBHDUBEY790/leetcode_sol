@@ -8,9 +8,8 @@ class Solution {
         for(int j=0;j<nums.length;j++)
         {
             while(a.get(nums[j])!=null && a.get(nums[j])>k){
-                int kk = a.get(nums[i]);
-                kk--;
-                a.put(nums[i++],kk);
+                a.put(nums[i],a.get(nums[i])-1);
+                i++;
             }
             a.put(nums[j],a.getOrDefault(nums[j],1)+1);
             max = Math.max(max,j-i+1);
