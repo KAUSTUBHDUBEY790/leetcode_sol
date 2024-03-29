@@ -12,14 +12,12 @@ class Solution {
                 g++;
             while(g==k)
             {
-                // ans++;
+                ans+=nums.length-j;
                 if(nums[i]==l)
-                {
-                 g--;   
-                }
+                    g--;
                 i++;
+                
             }
-            ans+=i;
                  
        }
         return ans;
